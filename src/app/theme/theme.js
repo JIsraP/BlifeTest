@@ -21,6 +21,7 @@ export const theme = createTheme({
             black: '#000',
             btn_bg: '#262c38',
             btn_border: '#EDA836',
+            btn_navbar_route: '#EDA836',
             card_action: '#F9F9F9',
             card_data: '#FFFFFF',
             card_discount: '#FF8E8E',

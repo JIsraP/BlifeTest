@@ -99,7 +99,7 @@ export const Promociones = () => {
             <Grid item xs={12} sx={{ mt: '10vh' }}>
                 <Paper elevation={0} className='image-container'>
                     <img className='image' src="./Banner.svg" alt="Banner" />
-                    <img className='overlay-image' src="./Rectangle 1.svg" alt="Oferta" />
+                    <img className='overlay-image-offer' src="./Rectangle 1.svg" alt="Oferta" />
                 </Paper>
             </Grid>
 

@@ -1,13 +1,15 @@
 import { AppBar, Button, Grid, IconButton, Menu, MenuItem, Toolbar, useMediaQuery } from "@mui/material"
-import { GridMenuIcon, GridSearchIcon } from '@mui/x-data-grid';
+import { GridMenuIcon } from '@mui/x-data-grid';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { startLogout } from '../../store/auth';
 import { useDispatch } from 'react-redux';
 import { AccountCircleOutlined, Logout, Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { SearchIcon } from "./SearchIcon";
 
 export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
+    const location = useLocation();
+    const currentPage = pages.find(page => page.route === location.pathname);
 
     const dispatch = useDispatch();
     const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
@@ -62,7 +64,17 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                             >
                                 {pages.map((page) =>
                                     <MenuItem key={page.name} onClick={handleMenuClose}>
-                                        <Button fullWidth component={Link} to={page.route} sx={{ color: 'App.text', textTransform: 'capitalize', fontSize: '15px' }}>
+                                        <Button fullWidth component={Link} to={page.route} sx={{
+                                            color: 'App.text',
+                                            textTransform: 'capitalize',
+                                            fontSize: '15px',
+                                            borderRadius: '22px',
+                                            height: '25px',
+                                            bgcolor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent',
+                                            '&:hover': {
+                                                backgroundColor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent'
+                                            }
+                                        }}>
                                             {page.name}
                                         </Button>
                                     </MenuItem>
@@ -80,7 +92,17 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                             <Grid container justifyContent='center'>
                                 {pages.map((page) =>
                                     <Grid item key={page.name} sx={{ ml: 1 }}>
-                                        <Button component={Link} to={page.route} sx={{ color: 'App.text', textTransform: 'capitalize', fontSize: '15px' }}>
+                                        <Button component={Link} to={page.route} sx={{
+                                            color: 'App.text',
+                                            textTransform: 'capitalize',
+                                            fontSize: '15px',
+                                            borderRadius: '22px',
+                                            height: '25px',
+                                            bgcolor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent',
+                                            '&:hover': {
+                                                backgroundColor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent'
+                                            }
+                                        }}>
                                             {page.name}
                                         </Button>
                                     </Grid>
@@ -92,7 +114,7 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                     <Grid item xs={4} >
                         <Grid container justifyContent='flex-end'>
                             <Grid item>
-                                <SearchIcon setSearchQuery={setSearchQuery} placeholder={placeholder}/>
+                                <SearchIcon setSearchQuery={setSearchQuery} placeholder={placeholder} />
                             </Grid>
 
                             <Grid item>
@@ -109,7 +131,7 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
                             <Grid item>
                                 <IconButton onClick={onLogout}>
-                                    <Logout/>
+                                    <Logout />
                                 </IconButton>
                             </Grid>
                         </Grid>
