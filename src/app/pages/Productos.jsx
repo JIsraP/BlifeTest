@@ -20,8 +20,8 @@ export const Productos = () => {
             "name": "Omega 3 Salmon Oil",
             "price": 599,
             "details": "180 Cápsulas | 400 Mg",
-            "discount_percentage": 20,
-            "discount_price": 119.8,
+            "discount_percentage": 0,
+            "discount_price": 0,
             "likes": 1000,
             "rate": 4.4,
             "img": "https://blife.mx/cdn/shop/files/omega3salmonoilbuena2.jpg?v=1684260550"
@@ -31,8 +31,8 @@ export const Productos = () => {
             "name": "Mens T Platinum",
             "price": 769,
             "details": "240 Cápsulas | 600 Mg",
-            "discount_percentage": 15,
-            "discount_price": 115.35,
+            "discount_percentage": 0,
+            "discount_price": 0,
             "likes": 90,
             "rate": 2.5,
             "img": "https://blife.mx/cdn/shop/files/0_Mockup_800x800_851f7106-bbb6-4023-b6cb-297c0e2a2ca5.png?v=1699552125"
@@ -41,11 +41,91 @@ export const Productos = () => {
             "name": "Potassium Citrate",
             "price": 999,
             "details": "240 Cápsulas | 500 Mg",
-            "discount_percentage": 30,
-            "discount_price": 299.7,
+            "discount_percentage": 0,
+            "discount_price": 0,
             "likes": 86,
             "rate": 5,
             "img": "https://blife.mx/cdn/shop/products/Potassium-Citrate-B-Life.webp?v=1673453292"
+        },
+        "005": {
+            "name": "60 Billion Probiotics",
+            "price": 259,
+            "details": "120 Cápsulas | 100 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 10,
+            "rate": 2.5,
+            "img": "https://blife.mx/cdn/shop/files/7_MockUp120_800x800_34cb5c06-108f-452a-9688-6788195857ab.png?v=1711001692"
+        },
+        "006": {
+            "name": "Resveratrol",
+            "price": 349,
+            "details": "90 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 127,
+            "rate": 3,
+            "img": "https://blife.mx/cdn/shop/products/Resveratrol_90_caps_b_life.webp?v=1681324046"
+        },
+        "007": {
+            "name": "Ashwagandha",
+            "price": 399,
+            "details": "200 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 325,
+            "rate": 3.5,
+            "img": "https://blife.mx/cdn/shop/files/0_MockUp180_800x800transparente_0088fe99-775b-4c3b-ab25-37cab8724ade.png?v=1708546192"
+        },
+        "008": {
+            "name": "Womens Mult Matur3",
+            "price": 499,
+            "details": "180 Cápsulas | 300 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 769,
+            "rate": 4,
+            "img": "https://blife.mx/cdn/shop/products/Womens-Mult-Matur3-180-Caps_b_life.webp?v=1680539190"
+        },
+        "009": {
+            "name": "D3 Plus",
+            "price": 450,
+            "details": "240 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 1298,
+            "rate": 5,
+            "img": "https://blife.mx/cdn/shop/files/Vitamina_D3_Plus_5000-_b_life.webp?v=1682531970"
+        },
+        "010": {
+            "name": "Glycinate Mag",
+            "price": 469,
+            "details": "240 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 356,
+            "rate": 4,
+            "img": "https://blife.mx/cdn/shop/products/Glycinate_Mag_240_b_life.webp?v=1677518414"
+        },
+        "011": {
+            "name": "Mens Multi Matur3",
+            "price": 499,
+            "details": "180 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 1876,
+            "rate": 5,
+            "img": "https://blife.mx/cdn/shop/files/0_Mockup180_800x800mens.png?v=1695838690"
+        },
+        "012": {
+            "name": "Collagen Bio",
+            "price": 449,
+            "details": "200 Cápsulas | 500 Mg",
+            "discount_percentage": 0,
+            "discount_price": 0,
+            "likes": 2543,
+            "rate": 5,
+            "img": "https://blife.mx/cdn/shop/files/0_Mockup180_800x800_dc15f3f2-f513-4b8e-8cd3-3a0a28ef6c65.png?v=1694727289"
         }
     }
 
@@ -88,7 +168,7 @@ export const Productos = () => {
             container
             spacing={0}
             padding={0}
-            justifyContent='center'
+            justifyContent='space-between'
             alignItems='center'
             sx={{ minHeight: '100vh', bgcolor: 'App.background' }}
         >
