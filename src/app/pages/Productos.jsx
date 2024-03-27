@@ -127,19 +127,19 @@ export const Productos = () => {
             "img": "https://blife.mx/cdn/shop/files/0_Mockup180_800x800_dc15f3f2-f513-4b8e-8cd3-3a0a28ef6c65.png?v=1694727289"
         }
     }
-    
+
     const placeholder = "Productos";
     const [productQuery, setProductQuery] = useState("");
     const [dataFiltered, setFilter] = useState([]);
     const [mapeado, setMapeado] = useState(false);
 
-    const filterData = (offerQuery, products) => {
-        if (!offerQuery) {
+    const filterData = (productQuery, products) => {
+        if (!productQuery) {
             return products;
         } else {
-            return products.filter((d) => {
+            return Object.values(products).filter((d) => {
                 return (
-                    (offerQuery && d.name.toLowerCase().includes(offerQuery.toLowerCase()))
+                    (productQuery && d.name.toLowerCase().includes(productQuery.toLowerCase()))
                 );
             });
         }
@@ -152,7 +152,7 @@ export const Productos = () => {
     ]
 
     useEffect(() => {
-        const filteredData = filterData(productQuery);
+        const filteredData = filterData(productQuery, productos);
         setFilter(filteredData);
     }, [productQuery]);
 
@@ -160,34 +160,35 @@ export const Productos = () => {
         setMapeado(true);
     }, []);
 
-
     return (
-        <Grid 
+        <Grid
             container
             spacing={0}
             padding={0}
-            justifyContent='space-between'
+            justifyContent='flex-start'
             alignItems='center'
             sx={{ minHeight: '100vh', bgcolor: 'App.background' }}
         >
-            <NavBar pages={pages} setSearchQuery={setProductQuery} placeholder={placeholder}/>
+            <NavBar pages={pages} setSearchQuery={setProductQuery} placeholder={placeholder} />
 
             <Grid item xs={12} sx={{ mt: '10vh' }}>
                 <Paper elevation={0} className='image-container'>
-                    <img  className="image" src = "https://cdn.shopify.com/s/files/1/0626/0421/4463/files/bannerkitweb.jpg"  alt="Banner" />
+                    <img className="image" src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/bannerkitweb.jpg" alt="Banner" />
                     <img className='overlay-image-product' src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/letraskitweb.png" alt="Oferta" />
 
                 </Paper>
             </Grid>
 
-            {mapeado && productos && (
-                Object.values(productos).map((product, index) => (
-                    <Grid item container key={index} xs={12} sm={6} md={6} lg={3} padding={2} sx={{ mt: '5vh', display: 'flex', justifyContent:'center' }}>
-                        <CardProduct producto={product}  />
+            {mapeado && dataFiltered && Object.values(dataFiltered).length > 0 ? (
+                Object.values(dataFiltered).map((product, index) => (
+                    <Grid item container key={index} xs={12} sm={6} md={6} lg={3} padding={2} sx={{ mt: '5vh', display: 'flex', justifyContent: 'center' }}>
+                        <CardProduct producto={product} />
                     </Grid>
-                ))
-            )}
-
+                ))) : (
+                    <Grid item container sx={{ mt: '5vh', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight:'40vh' }}>
+                        <Typography>No hay coincidencias con tu búsqueda</Typography>
+                    </Grid>
+                )}
         </Grid>
     )
 }

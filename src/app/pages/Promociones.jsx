@@ -1,4 +1,4 @@
-import { Grid, Paper } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { CardProduct, NavBar } from '../components'
 
@@ -48,17 +48,18 @@ export const Promociones = () => {
         }
     }
 
+
     const [offerQuery, setOfferQuery] = useState("");
     const [dataFiltered, setFilter] = useState([]);
     const [mapeado, setMapeado] = useState(false);
 
     const placeholder = "Ofertas";
 
-    const filterData = (offerQuery, offers) => {
+    const filterData = (offerQuery, productos) => {
         if (!offerQuery) {
-            return offers;
+            return productos;
         } else {
-            return offers.filter((d) => {
+            return Object.values(productos).filter((d) => {
                 return (
                     (offerQuery && d.name.toLowerCase().includes(offerQuery.toLowerCase()))
                 );
@@ -73,7 +74,7 @@ export const Promociones = () => {
     ]
 
     useEffect(() => {
-        const filteredData = filterData(offerQuery);
+        const filteredData = filterData(offerQuery, productos);
         setFilter(filteredData);
     }, [offerQuery]);
 
@@ -86,7 +87,7 @@ export const Promociones = () => {
             container
             spacing={0}
             padding={0}
-            justifyContent='center'
+            justifyContent='flex-start'
             sx={{ minHeight: '100vh', minWidth: '100vw', bgcolor: 'App.background' }}
         >
             <NavBar pages={pages} setSearchQuery={setOfferQuery} placeholder={placeholder} />
@@ -98,14 +99,17 @@ export const Promociones = () => {
                 </Paper>
             </Grid>
 
-            {mapeado && productos && (
-                Object.values(productos).map((product, index) => (
-                    <Grid item container key={index} xs={12} sm={6} md={6} lg={3} padding={2} sx={{ mt: '5vh', display: 'flex', justifyContent:'center' }}>
+            {mapeado && dataFiltered && Object.values(dataFiltered).length > 0 ? (
+                Object.values(dataFiltered).map((product, index) => (
+                    <Grid item container key={index} xs={12} sm={6} md={6} lg={3} padding={2} sx={{ mt: '5vh', display: 'flex', justifyContent: 'center' }}>
                         <CardProduct producto={product} />
                     </Grid>
-                ))
-            )}
-
+                ))) : 
+                (
+                    <Grid item container sx={{ mt: '5vh', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight:'40vh' }}>
+                        <Typography>No hay coincidencias con tu búsqueda</Typography>
+                    </Grid>
+                )}
         </Grid>
     )
 }

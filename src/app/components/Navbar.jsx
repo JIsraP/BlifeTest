@@ -23,7 +23,6 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
     const location = useLocation();
     const currentPage = pages.find(page => page.route === location.pathname);
-    console.log(currentPage)
 
     const dispatch = useDispatch();
     const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
