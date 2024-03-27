@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { CardProduct, NavBar } from '../components'
 
 export const Promociones = () => {
-
     // Simulacion de datos recuperados del back
     const productos = {
         "001": {

@@ -6,6 +6,9 @@ import { useCart } from '../../hooks'
 
 export const CardProduct = ({ producto }) => {
   const { addToCart } = useCart();
+  const handleaddToCart = () => {
+    addToCart(producto);
+  }
   return (
     <Card sx={{ maxWidth: '340px', maxHeight: '515px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderRadius: '24px', bgcolor: 'transparent' }}>
       <CardContent sx={{ width: '100%', bgcolor: 'App.card_action', minHeight: '520px', display: 'flex', alignItems: 'flex-end' }}>
@@ -42,7 +45,7 @@ export const CardProduct = ({ producto }) => {
 
           <Grid item>
             <Grid container>
-              <Button onClick={addToCart} sx={{ textTransform: 'capitalize', borderRadius: '20px', border: '1px solid', borderColor: 'App.btn_border', width: '90px', fontSize: '12px' }}>
+              <Button onClick={handleaddToCart} sx={{ textTransform: 'capitalize', borderRadius: '20px', border: '1px solid', borderColor: 'App.btn_border', width: '90px', fontSize: '12px' }}>
                 Agregar
               </Button>
             </Grid>
