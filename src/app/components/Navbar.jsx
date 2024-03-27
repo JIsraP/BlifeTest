@@ -1,4 +1,4 @@
-import { AppBar, Badge, Button, Grid, IconButton, Menu, MenuItem, Toolbar, useMediaQuery } from "@mui/material"
+import { AppBar, Badge, Button, Grid, IconButton, Menu, MenuItem, Popover, Toolbar, useMediaQuery } from "@mui/material"
 import { GridMenuIcon } from '@mui/x-data-grid';
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -7,9 +7,20 @@ import { useDispatch } from 'react-redux';
 import { AccountCircleOutlined, Logout, ShoppingBagOutlined } from "@mui/icons-material";
 import { SearchIcon } from "./SearchIcon";
 import { useCart } from "../../hooks";
+import { CartContent } from "./CartContent";
 
 export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
     const { cartItems } = useCart();
+    const [cartAnchor, setCartAnchor] = useState(null);
+
+    const handleCartOpen = (event) => {
+        setCartAnchor(event.currentTarget);
+    };
+
+    const handleCartClose = () => {
+        setCartAnchor(null);
+    };
+
     const location = useLocation();
     const currentPage = pages.find(page => page.route === location.pathname);
 
@@ -126,11 +137,26 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                             </Grid>
 
                             <Grid item>
-                                <IconButton>
+                                <IconButton onClick={handleCartOpen}>
                                     <Badge badgeContent={cartItems} color="error">
                                         <ShoppingBagOutlined />
                                     </Badge>
                                 </IconButton>
+                                <Popover
+                                    open={Boolean(cartAnchor)}
+                                    anchorEl={cartAnchor}
+                                    onClose={handleCartClose}
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'right',
+                                    }}
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                >
+                                    <CartContent />
+                                </Popover>
                             </Grid>
 
                             <Grid item>
