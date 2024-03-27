@@ -28,7 +28,8 @@ export const theme = createTheme({
             card_likes: '#FFFFFF',
             card_heart: '#FF8E8E',
             star_rating: '#ffc107',
-            star_remaining: '#D9D9D9'
+            star_remaining: '#D9D9D9',
+            cart_badge: '#f00'
         }
     }
 })

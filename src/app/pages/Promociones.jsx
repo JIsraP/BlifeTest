@@ -78,10 +78,6 @@ export const Promociones = () => {
         setFilter(filteredData);
     }, [offerQuery]);
 
-    Object.values(productos).map((product) => (
-        console.log(product)
-    ))
-
     useEffect(() => {
         setMapeado(true);
     }, []);

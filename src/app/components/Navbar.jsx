@@ -1,13 +1,15 @@
-import { AppBar, Button, Grid, IconButton, Menu, MenuItem, Toolbar, useMediaQuery } from "@mui/material"
+import { AppBar, Badge, Button, Grid, IconButton, Menu, MenuItem, Toolbar, useMediaQuery } from "@mui/material"
 import { GridMenuIcon } from '@mui/x-data-grid';
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { startLogout } from '../../store/auth';
 import { useDispatch } from 'react-redux';
-import { AccountCircleOutlined, Logout, Search, ShoppingCartOutlined } from "@mui/icons-material";
+import { AccountCircleOutlined, Logout, ShoppingBagOutlined } from "@mui/icons-material";
 import { SearchIcon } from "./SearchIcon";
+import { useCart } from "../../hooks";
 
 export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
+    const { cartItems } = useCart();
     const location = useLocation();
     const currentPage = pages.find(page => page.route === location.pathname);
 
@@ -125,7 +127,9 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
                             <Grid item>
                                 <IconButton>
-                                    <ShoppingCartOutlined />
+                                    <Badge badgeContent={cartItems} color="error">
+                                        <ShoppingBagOutlined />
+                                    </Badge>
                                 </IconButton>
                             </Grid>
 

@@ -128,12 +128,11 @@ export const Productos = () => {
             "img": "https://blife.mx/cdn/shop/files/0_Mockup180_800x800_dc15f3f2-f513-4b8e-8cd3-3a0a28ef6c65.png?v=1694727289"
         }
     }
-
+    
+    const placeholder = "Productos";
     const [productQuery, setProductQuery] = useState("");
     const [dataFiltered, setFilter] = useState([]);
     const [mapeado, setMapeado] = useState(false);
-
-    const placeholder = "Productos";
 
     const filterData = (offerQuery, products) => {
         if (!offerQuery) {
@@ -185,7 +184,7 @@ export const Productos = () => {
             {mapeado && productos && (
                 Object.values(productos).map((product, index) => (
                     <Grid item container key={index} xs={12} sm={6} md={6} lg={3} padding={2} sx={{ mt: '5vh', display: 'flex', justifyContent:'center' }}>
-                        <CardProduct producto={product} />
+                        <CardProduct producto={product}  />
                     </Grid>
                 ))
             )}
