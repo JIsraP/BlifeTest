@@ -1,5 +1,5 @@
 import { Search} from '@mui/icons-material'
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
+import { FormControl, IconButton, InputAdornment, OutlinedInput } from '@mui/material'
 import React from 'react'
 
 export const SearchBar = ({ setSearchQuery, placeholder }) => {

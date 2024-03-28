@@ -1,7 +1,6 @@
-import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Button, FormControl, Grid, InputLabel, OutlinedInput, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import { NavBar } from '../components'
-import { InputOutlined } from '@mui/icons-material';
 
 export const Contacto = () => {
     const [contactQuery, setContactQuery] = useState("");
