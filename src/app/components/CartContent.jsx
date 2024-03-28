@@ -38,6 +38,7 @@ export const CartContent = () => {
                                 </Grid>
                                 <Grid item>
                                     <Typography variant="body1">{product.name}</Typography>
+                                    <Typography variant="body2">{`${product.details}`}</Typography>
                                     <Typography variant="body2">{`Precio: $${product.price}`}</Typography>
                                 </Grid>
                             </Grid>

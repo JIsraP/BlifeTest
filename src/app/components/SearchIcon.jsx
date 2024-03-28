@@ -18,7 +18,7 @@ export const SearchIcon = ({setSearchQuery, placeholder}) => {
       <div>
         {!isSearchVisible && (
           <IconButton onClick={handleSearchButtonClick}>
-            <Search />
+            <Search sx={{fontSize: '20px'}}/>
           </IconButton>
         )}
         {isSearchVisible && (

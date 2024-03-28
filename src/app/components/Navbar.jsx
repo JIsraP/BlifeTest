@@ -51,6 +51,7 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
             <Toolbar>
                 <Grid container
                     alignItems='center'
+                    justifyContent='space-between'
                     spacing={2}
                 >
 
@@ -60,45 +61,38 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
                     {isSmallScreen ?
                         <Grid item>
-                            <IconButton onClick={handleMenuOpen} sx={{ ml: 1, color: 'App.white' }}>
+                            <IconButton onClick={handleMenuOpen}>
                                 <GridMenuIcon />
                             </IconButton>
-                            <Menu
-                                anchorEl={menuAnchor}
+                            <Popover
                                 open={Boolean(menuAnchor)}
+                                anchorEl={menuAnchor}
                                 onClose={handleMenuClose}
-                                PaperProps={{
-                                    sx: {
-                                        borderRadius: 3,
-                                        overflow: 'hidden',
-                                        bgcolor: 'secondary.main',
-                                    },
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
                                 }}
                             >
                                 {pages.map((page) =>
-                                    <MenuItem key={page.name} onClick={handleMenuClose}>
-                                        <Button fullWidth component={Link} to={page.route} sx={{
-                                            color: 'App.text',
-                                            textTransform: 'capitalize',
-                                            fontSize: '15px',
-                                            borderRadius: '22px',
-                                            height: '25px',
-                                            bgcolor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent',
-                                            '&:hover': {
-                                                backgroundColor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent'
-                                            }
-                                        }}>
-                                            {page.name}
-                                        </Button>
-                                    </MenuItem>
-                                )}
-
-                                <MenuItem>
-                                    <Button fullWidth onClick={onLogout} sx={{ color: 'App.text', textTransform: 'capitalize', fontSize: '15px' }}>
-                                        Log Out
+                                    <Button fullWidth component={Link} to={page.route} sx={{
+                                        color: 'App.text',
+                                        textTransform: 'capitalize',
+                                        fontSize: '15px',
+                                        borderRadius: '22px',
+                                        height: '25px',
+                                        bgcolor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent',
+                                        '&:hover': {
+                                            backgroundColor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent'
+                                        }
+                                    }}>
+                                        {page.name}
                                     </Button>
-                                </MenuItem>
-                            </Menu>
+                                )}
+                            </Popover>
                         </Grid>
                         :
                         <Grid item xs={4}>
@@ -111,7 +105,7 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                                             fontSize: '15px',
                                             borderRadius: '22px',
                                             height: '25px',
-                                            bgcolor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent',
+                                            bgcolor: (currentPage && currentPage.route === page.route) ? 'App.btn_navbar_route' : 'transparent',
                                             '&:hover': {
                                                 backgroundColor: currentPage && currentPage.route === page.route ? 'App.btn_navbar_route' : 'transparent'
                                             }
@@ -121,9 +115,10 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
                                     </Grid>
                                 )}
                             </Grid>
+
                         </Grid>
                     }
-
+                    
                     <Grid item xs={4} >
                         <Grid container justifyContent='flex-end'>
                             <Grid item>
@@ -132,14 +127,14 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
                             <Grid item>
                                 <IconButton>
-                                    <AccountCircleOutlined />
+                                    <AccountCircleOutlined sx={{fontSize: '20px'}}/>
                                 </IconButton>
                             </Grid>
 
                             <Grid item>
                                 <IconButton onClick={handleCartOpen}>
                                     <Badge badgeContent={cartItems} color="error">
-                                        <ShoppingBagOutlined />
+                                        <ShoppingBagOutlined sx={{fontSize: '20px'}}/>
                                     </Badge>
                                 </IconButton>
                                 <Popover
@@ -161,11 +156,13 @@ export const NavBar = ({ pages, setSearchQuery, placeholder }) => {
 
                             <Grid item>
                                 <IconButton onClick={onLogout}>
-                                    <Logout />
+                                    <Logout sx={{fontSize: '20px'}}/>
                                 </IconButton>
                             </Grid>
                         </Grid>
                     </Grid>
+
+
                 </Grid>
 
             </Toolbar>

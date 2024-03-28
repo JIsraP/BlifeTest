@@ -18,7 +18,7 @@ export const SearchBar = ({ setSearchQuery, placeholder }) => {
                             edge="end"
                             sx={{ color: 'App.gris' }}
                         >
-                           <Search />
+                           <Search sx={{fontSize: '20px'}}/>
 
                         </IconButton>
                     </InputAdornment>
