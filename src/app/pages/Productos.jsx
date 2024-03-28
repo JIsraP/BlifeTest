@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from '@mui/material'
+import { Grid, Paper, Typography, useMediaQuery } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { CardProduct, NavBar } from '../components';
 
@@ -132,6 +132,7 @@ export const Productos = () => {
     const [productQuery, setProductQuery] = useState("");
     const [dataFiltered, setFilter] = useState([]);
     const [mapeado, setMapeado] = useState(false);
+    const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
     const filterData = (productQuery, products) => {
         if (!productQuery) {
@@ -173,9 +174,18 @@ export const Productos = () => {
 
             <Grid item xs={12} sx={{ mt: '10vh' }}>
                 <Paper elevation={0} className='image-container'>
-                    <img className="image" src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/bannerkitweb.jpg" alt="Banner" />
-                    <img className='overlay-image-product' src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/letraskitweb.png" alt="Oferta" />
 
+                    {isSmallScreen ? (
+                        <>
+                            <img className="image-sm" src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/bannerkitweb.jpg" alt="Banner" />
+                            <img className='overlay-image-product-sm' src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/letraskitweb.png" alt="Oferta" />
+                        </>
+                    ) : (
+                        <>
+                            <img className="image" src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/bannerkitweb.jpg" alt="Banner" />
+                            <img className='overlay-image-product-lg' src="https://cdn.shopify.com/s/files/1/0626/0421/4463/files/letraskitweb.png" alt="Oferta" />
+                        </>
+                    )}
                 </Paper>
             </Grid>
 
@@ -185,10 +195,10 @@ export const Productos = () => {
                         <CardProduct producto={product} />
                     </Grid>
                 ))) : (
-                    <Grid item container sx={{ mt: '5vh', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight:'40vh' }}>
-                        <Typography>No hay coincidencias con tu búsqueda</Typography>
-                    </Grid>
-                )}
+                <Grid item container sx={{ mt: '5vh', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
+                    <Typography>No hay coincidencias con tu búsqueda</Typography>
+                </Grid>
+            )}
         </Grid>
     )
 }
